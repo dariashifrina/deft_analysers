@@ -1,5 +1,5 @@
 
-public class DLLNode{
+public class DLLNode<T>{
     
     private T _cargo;    //cargo may only be of type String
     private DLLNode<T> _nextNode; //pointer to next DLLNode
@@ -26,7 +26,7 @@ public class DLLNode{
     //--------------v  MUTATORS  v--------------
     public T setCargo( T newCargo ) 
     {
-	Object ret = _cargo; 
+	T ret = _cargo; 
 	_cargo = newCargo; 
 	return ret; 
     }

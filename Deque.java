@@ -8,7 +8,7 @@ public interface Deque<T> {
     
     T peekFirst();//return the element at the beginning of deque 
     
-    T peekLast(T val);//return the element at the end
+    T peekLast();//return the element at the end
     
     T pollFirst();//return AND remove the element at the beginning
     
