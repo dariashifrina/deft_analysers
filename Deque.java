@@ -1,19 +1,19 @@
 public interface Deque<T> {  
 
-    int size();
+    int size();//return size of the deque 
     
-    void addFirst(T val); 
+    void addFirst(T val);//add val to the start
 
-    void addLast(T val);
+    void addLast(T val);//add val to the end 
     
-    T peekFirst();
+    T peekFirst();//return the element at the beginning of deque 
     
-    T peekLast(T val);
+    T peekLast(T val);//return the element at the end
     
-    T pollFirst();
+    T pollFirst();//return AND remove the element at the beginning
     
-    T pollLast();
+    T pollLast();//return AND remove the element at the end  
     
-    boolean isEmpty(); 
+    boolean isEmpty();//returns true if the deque has no elements, false otherwise 
     
 }
