@@ -1,11 +1,11 @@
 public interface Deque<T> {  
 
     int size();
-
-    void addLast(T val);
     
     void addFirst(T val); 
 
+    void addLast(T val);
+    
     T peekFirst();
     
     T peekLast(T val);
