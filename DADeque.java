@@ -23,11 +23,11 @@ public class DADeque<T> implements Deque<T>
 	_end = null;
 	_size = 0; 
     }
-
+    //returns size of queue
     public int size(){
 	return _size; 
     }
-    
+    //adds a value to the beginning of a queue
     public void addFirst(T val){
 	//DLLNode newNode = new DLLNode<T>(val, null, null);
         if(_front == null){
@@ -42,7 +42,7 @@ public class DADeque<T> implements Deque<T>
 	}
 	_size++; 
     }
-
+    //adds a value to the end of a queue
     public void addLast(T val){
         if(_front == null){
 	    DLLNode newNode = new DLLNode<T>(val, null, null);
@@ -56,15 +56,15 @@ public class DADeque<T> implements Deque<T>
 	}
 	_size++; 	
     }
-    
+    //returns the value of the first item in queue
     public T peekFirst(){
 	return _front.getCargo(); 
     }
-    
+    // returns the value of the last item in queue
     public T peekLast(){
 	return _end.getCargo();
     }
-    
+    //removes the first item in queue and returns its value
     public T pollFirst(){
 	if(isEmpty()){
 	return null;
@@ -76,7 +76,7 @@ public class DADeque<T> implements Deque<T>
 	return tmpval;
 }
     }
-    
+    //removes the last time in queue and returns its value
     public T pollLast(){
 	if(isEmpty()){
 	return null;
@@ -88,7 +88,7 @@ public class DADeque<T> implements Deque<T>
 	return tmpval;
 }
     }
-    
+    //returns whether or not queue is empty
     public boolean isEmpty(){
 	return(_size==0);
     }
