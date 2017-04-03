@@ -114,6 +114,30 @@ public class DADeque<T> implements Deque<T>
 	retStr += "NULL";
 	return retStr;
     }
+    
+     public boolean removeFirstOccurrence(T thing){
+	DLLNode temp = _front; 
+	while(temp != _end){
+	    if(temp.getCargo().equals(thing)){
+		temp.getPrev().setNext(temp.getNext()); 
+		return true; 
+	    }
+	    temp = temp.getNext(); 
+	}
+	return false; 
+    }
+
+    public boolean removeLastOccurrence(T thing){
+	DLLNode temp = _end; 
+	while(temp != _front){
+	    if(temp.getCargo().equals(thing)){
+		temp.getPrev().setNext(temp.getNext()); 
+		return true; 
+	    }
+	    temp = temp.getPrev(); 
+	}
+	return false; 
+    }       
 
     public static void main(String[] args){
     }
