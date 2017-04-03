@@ -16,4 +16,8 @@ public interface Deque<T> {
     
     boolean isEmpty();//returns true if the deque has no elements, false otherwise 
     
+    boolean removeFirstOccurrence(T thing);//removes first occurence of thing, if success, return true, else return false
+
+    boolean removeLastOccurrence(T thing);//removes last occurence of thing, if success, return true, else return false    
+    
 }
