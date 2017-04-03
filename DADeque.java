@@ -93,7 +93,7 @@ public class DADeque<T> implements Deque<T>
 }
 	else{
 	T tmpval = this.peekLast();
-	_end = _end.getPrev();
+	_end = _end.getPrev() ;
 	_size -= 1;
 	return tmpval;
 }
@@ -107,11 +107,11 @@ public class DADeque<T> implements Deque<T>
     { 
         String retStr = "HEAD->";
 	DLLNode<T> tmp = _front;
-	while(tmp != null){
+	while(tmp != _end){
 	    retStr += tmp.getCargo() + "->";
 	    tmp = tmp.getNext();
 	}
-	retStr += "NULL";
+	retStr += _end.getCargo() + "->NULL";
 	return retStr;
     }
     
@@ -119,7 +119,9 @@ public class DADeque<T> implements Deque<T>
 	DLLNode temp = _front; 
 	while(temp != _end){
 	    if(temp.getCargo().equals(thing)){
-		temp.getPrev().setNext(temp.getNext()); 
+		temp = temp.getNext();
+		//	temp.getPrev().setNext(temp.getNext()); 
+		_size--;
 		return true; 
 	    }
 	    temp = temp.getNext(); 
@@ -131,7 +133,9 @@ public class DADeque<T> implements Deque<T>
 	DLLNode temp = _end; 
 	while(temp != _front){
 	    if(temp.getCargo().equals(thing)){
-		temp.getPrev().setNext(temp.getNext()); 
+		temp = temp.getNext();
+		//		temp.getPrev().setNext(temp.getNext());
+		_size--;
 		return true; 
 	    }
 	    temp = temp.getPrev(); 
@@ -140,6 +144,20 @@ public class DADeque<T> implements Deque<T>
     }       
 
     public static void main(String[] args){
+	DADeque dasha = new DADeque<String>();
+	dasha.addFirst("poop");
+	dasha.addLast("HELLO");
+	dasha.addLast("jasper");
+	System.out.println(dasha); //poop->hello->jasper
+	dasha.pollFirst();
+	System.out.println(dasha); // hello -> jasper
+	dasha.pollLast();
+	System.out.println(dasha); // hello
+	dasha.addFirst("allard");
+	dasha.addLast("allard");
+	System.out.println(dasha); // allard -> hello -> allard
+	dasha.removeFirstOccurrence("allard");
+	System.out.println(dasha); // hello -> allard
     }
 
 }
