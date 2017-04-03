@@ -1,13 +1,8 @@
 /*
-
 NULL  <- N1 <--> N2 <--> N3 <--> N4 -> NULL
-
    _front^                        ^_end 
-
 >>>>>> this way is NEXT 
-
 <<<<<< this way is PREV
-
  */
 
 public class DADeque<T> implements Deque<T> 
@@ -105,41 +100,61 @@ public class DADeque<T> implements Deque<T>
     
     public String toString() 
     { 
-        String retStr = "HEAD->";
+        String retStr = "FRONT--> ";
 	DLLNode<T> tmp = _front;
-	while(tmp != _end){
-	    retStr += tmp.getCargo() + "->";
+	while(tmp != null){
+	    retStr += tmp.getCargo() + "  ";
 	    tmp = tmp.getNext();
 	}
-	retStr += _end.getCargo() + "->NULL";
+	retStr += "<--END";
 	return retStr;
     }
     
      public boolean removeFirstOccurrence(T thing){
 	DLLNode temp = _front; 
-	while(temp != _end){
+	while(temp != null){
 	    if(temp.getCargo().equals(thing)){
-		temp = temp.getNext();
-		//	temp.getPrev().setNext(temp.getNext()); 
+		if(temp == _front){//this was the very first element checked (aka _front)
+		    _front = temp.getNext();
+		    _front.setPrev(null); 
+		}
+		else if(temp == _end){//this was the very last element checked (aka _end)
+		    _end = _end.getPrev();
+		    _end.setNext(null); 
+		}
+		else{//somewhere in between...
+		    temp.getPrev().setNext(temp.getNext());
+		    temp.getNext().setPrev(temp.getPrev()); 
+		}		
 		_size--;
 		return true; 
 	    }
 	    temp = temp.getNext(); 
-	}
+	}	
 	return false; 
     }
 
     public boolean removeLastOccurrence(T thing){
 	DLLNode temp = _end; 
-	while(temp != _front){
+	while(temp != null){
 	    if(temp.getCargo().equals(thing)){
-		temp = temp.getNext();
-		//		temp.getPrev().setNext(temp.getNext());
+		if(temp == _front){//this was the very last element checked (aka _front)
+		    _front = temp.getNext();
+		    _front.setPrev(null); 
+		}
+		else if(temp == _end){//this was the very first element checked (aka _end)
+		    _end = _end.getPrev();
+		    _end.setNext(null); 
+		}
+		else{//somewhere in between...
+		    temp.getPrev().setNext(temp.getNext());
+		    temp.getNext().setPrev(temp.getPrev()); 
+		}		
 		_size--;
 		return true; 
 	    }
 	    temp = temp.getPrev(); 
-	}
+	}	
 	return false; 
     }       
 
@@ -155,9 +170,13 @@ public class DADeque<T> implements Deque<T>
 	System.out.println(dasha); // hello
 	dasha.addFirst("allard");
 	dasha.addLast("allard");
-	System.out.println(dasha); // allard -> hello -> allard
-	dasha.removeFirstOccurrence("allard");
-	System.out.println(dasha); // hello -> allard
+	dasha.addLast("bob"); 
+	System.out.println(dasha); // allard -> hello -> allard -> bob
+	
+	System.out.println("removing bob via removeFirstOcc: " + dasha.removeFirstOccurrence("bob"));
+	System.out.println(dasha);
+	System.out.println("removing last allard via removeLastOcc: " + dasha.removeLastOccurrence("allard"));
+	System.out.println(dasha);
     }
 
 }
