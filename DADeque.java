@@ -58,11 +58,21 @@ public class DADeque<T> implements Deque<T>
     }
     //returns the value of the first item in queue
     public T peekFirst(){
-	return _front.getCargo(); 
+	if(isEmpty()){
+	    return null;
+	}
+	else{
+	return _front.getCargo();
+	} 
     }
     // returns the value of the last item in queue
     public T peekLast(){
+	if(isEmpty()){
+	    return null;
+	}
+	else{
 	return _end.getCargo();
+	}
     }
     //removes the first item in queue and returns its value
     public T pollFirst(){
