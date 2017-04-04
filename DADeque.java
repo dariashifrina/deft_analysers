@@ -110,6 +110,7 @@ public class DADeque<T> implements Deque<T>
 	return retStr;
     }
     
+//removes the first occurrence of an object in the queue from the front, returns true if successful and false otherwise.
      public boolean removeFirstOccurrence(T thing){
 	DLLNode temp = _front; 
 	while(temp != null){
@@ -133,7 +134,7 @@ public class DADeque<T> implements Deque<T>
 	}	
 	return false; 
     }
-
+//removes the first occurrence of an object in the queue from the back, returns true if successful and false otherwise.
     public boolean removeLastOccurrence(T thing){
 	DLLNode temp = _end; 
 	while(temp != null){

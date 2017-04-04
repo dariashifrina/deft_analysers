@@ -16,4 +16,4 @@ Home of the Deft Analysers.
    
    ## Our Methods
 
-We included both the AddFirst(T val) and AddLast(T val) methods, as well as the pollFirst() and pollLast() methods. All four methods were required to support element insertion and removal at both ends. We also included the peekFirst() and peekLast() methods to assist with removing items from the deque. For example, if we added to the front, we would peek the first element to return, and if we added to the end, we would peek the last element to return.
+We included both the AddFirst(T val) and AddLast(T val) methods, as well as the pollFirst() and pollLast() methods. All four methods were required to support element insertion and removal at both ends. We also included the peekFirst() and peekLast() methods to assist with removing items from the deque. For example, if we added to the front, we would peek the first element to return, and if we added to the end, we would peek the last element to return. We also included removeFirstOccurence and removeLastOccurrence because it mobilized the removal of objects by tracking from the front and end of the queue. 
