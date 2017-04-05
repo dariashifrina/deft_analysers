@@ -77,6 +77,7 @@ public class DADeque<T> implements Deque<T>
 	else{
 	T tmpval = this.peekFirst();
 	_front = _front.getNext();
+	_front.setPrev(null); 
 	_size -= 1;
 	return tmpval;
 }
@@ -89,6 +90,7 @@ public class DADeque<T> implements Deque<T>
 	else{
 	T tmpval = this.peekLast();
 	_end = _end.getPrev() ;
+	_end.setNext(null); 
 	_size -= 1;
 	return tmpval;
 }
