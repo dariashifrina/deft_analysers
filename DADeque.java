@@ -1,9 +1,9 @@
 /*
-NULL  <- N1 <--> N2 <--> N3 <--> N4 -> NULL
-   _front^                        ^_end 
->>>>>> this way is NEXT 
-<<<<<< this way is PREV
- */
+  NULL  <- N1 <--> N2 <--> N3 <--> N4 -> NULL
+  _front^                        ^_end 
+  >>>>>> this way is NEXT 
+  <<<<<< this way is PREV
+*/
 
 public class DADeque<T> implements Deque<T> 
 {
@@ -57,7 +57,7 @@ public class DADeque<T> implements Deque<T>
 	    return null;
 	}
 	else{
-	return _front.getCargo();
+	    return _front.getCargo();
 	} 
     }
     // returns the value of the last item in queue
@@ -66,34 +66,34 @@ public class DADeque<T> implements Deque<T>
 	    return null;
 	}
 	else{
-	return _end.getCargo();
+	    return _end.getCargo();
 	}
     }
     //removes the first item in queue and returns its value
     public T pollFirst(){
 	if(isEmpty()){
-	return null;
-}
+	    return null;
+	}
 	else{
-	T tmpval = this.peekFirst();
-	_front = _front.getNext();
-	_front.setPrev(null); 
-	_size -= 1;
-	return tmpval;
-}
+	    T tmpval = this.peekFirst();
+	    _front = _front.getNext();
+	    _front.setPrev(null); 
+	    _size -= 1;
+	    return tmpval;
+	}
     }
     //removes the last time in queue and returns its value
     public T pollLast(){
 	if(isEmpty()){
-	return null;
-}
+	    return null;
+	}
 	else{
-	T tmpval = this.peekLast();
-	_end = _end.getPrev() ;
-	_end.setNext(null); 
-	_size -= 1;
-	return tmpval;
-}
+	    T tmpval = this.peekLast();
+	    _end = _end.getPrev() ;
+	    _end.setNext(null); 
+	    _size -= 1;
+	    return tmpval;
+	}
     }
     //returns whether or not queue is empty
     public boolean isEmpty(){
@@ -112,8 +112,8 @@ public class DADeque<T> implements Deque<T>
 	return retStr;
     }
     
-//removes the first occurrence of an object in the queue from the front, returns true if successful and false otherwise.
-     public boolean removeFirstOccurrence(T thing){
+    //removes the first occurrence of an object in the queue from the front, returns true if successful and false otherwise.
+    public boolean removeFirstOccurrence(T thing){
 	DLLNode temp = _front; 
 	while(temp != null){
 	    if(temp.getCargo().equals(thing)){
@@ -136,7 +136,7 @@ public class DADeque<T> implements Deque<T>
 	}	
 	return false; 
     }
-//removes the first occurrence of an object in the queue from the back, returns true if successful and false otherwise.
+    //removes the first occurrence of an object in the queue from the back, returns true if successful and false otherwise.
     public boolean removeLastOccurrence(T thing){
 	DLLNode temp = _end; 
 	while(temp != null){
